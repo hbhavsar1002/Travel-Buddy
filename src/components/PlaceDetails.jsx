@@ -3,8 +3,11 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
 import DemoRest from "../assets/demo-restaurant.jpg";
+import Rating from "./Rating";
 
 const PlaceDetails = ({ place }) => {
+  //if(selected) refProp?.current?.scrollIntoView({behaviour: "smooth", block: "start"})
+  //console.log(place.rating,place.name)
   return (
     <div className=" border-black mb-5 shadow-xl shadow-gray-500/50 ">
       <div className="h-40 w-full overflow-clip rounded-t-lg">
@@ -25,6 +28,10 @@ const PlaceDetails = ({ place }) => {
 
       <div className="p-2 ">
         <p className="mb-2 text-lg">{place.name}</p>
+        <div className="flex justify-between ">
+          <Rating rating={place.rating}/>
+          <p className="text-sm sm:text-xs md:text-sm">out of {place.num_reviews}</p>
+        </div>
         <div className="flex justify-between ">
           <p className="text-sm sm:text-xs md:text-sm">Price</p>
           <p className="text-sm sm:text-xs md:text-sm">{place.price_level}</p>
