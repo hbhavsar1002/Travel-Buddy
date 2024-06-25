@@ -12,16 +12,14 @@ const Map = ({
   places,
   setChildClicked,
 }) => {
-  console.log("map", places);
+  //console.log("map", places);
 
   return (
     <div className="h-[85vh] w-full border">
-      {/* {places.map((place, index) => (
-        <p key={index}>{place.name}</p>
-      ))} */}
       <GoogleMapReact
-        onChildClick={(child) => setChildClicked(child)}
+        //onChildClick={(child) => setChildClicked(child)} 
         bootstrapURLKeys={{ key: "AIzaSyD0T6DEI3cHv4dCkl_W5LJkdKm7bR8MFHc" }}
+        defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={15}
         margin={[50, 50, 50, 50]}
@@ -36,13 +34,9 @@ const Map = ({
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
         }}
       >
-        {places?.filter((place) => place.latitude && place.longitude).map((place, index) => (
-          <>
-            {console.log(
-              "places filled and rendering marker",
-              place.name,
-              place.latitude, place.longitude,index
-            )}
+        {places
+          ?.filter((place) => place.latitude && place.longitude && place.rating !== undefined && place.rating !== null)
+          .map((place, index) => (
             <div
               className="absolute transform -translate-x-1/2 -translate-y-1/2 z-10 hover:z-20"
               lat={Number(place.latitude)}
@@ -50,12 +44,9 @@ const Map = ({
               key={index}
             >
               <div className="sm:hidden">
-                {/* Rendered only on mobile screens */}
                 <IoLocationOutline className="text-2xl font-bold" />
               </div>
               <div className="hidden sm:block">
-                {/* Rendered on screens larger than mobile */}
-                {/* Your desktop content here */}
                 <div className="shadow-md bg-white w-[100px] justify-center flex-col flex p-1">
                   <p className="mb-3">{place.name}</p>
                   <img
@@ -72,8 +63,7 @@ const Map = ({
                 </div>
               </div>
             </div>
-          </>
-        ))}
+          ))}
       </GoogleMapReact>
     </div>
   );

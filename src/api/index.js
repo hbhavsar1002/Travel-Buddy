@@ -14,7 +14,7 @@ export const getPlacesData = async (sw, ne) => {
         tr_latitude: ne.lat,
         bl_longitude: sw.lng,
         tr_longitude: ne.lng,
-        limit: 10,
+        limit: 5,
       },
       headers: {
         "x-rapidapi-key": "2fd06344cdmsh6212c9232dc4f59p1381c2jsn8f70de40b4b0",
@@ -23,7 +23,6 @@ export const getPlacesData = async (sw, ne) => {
     };
     //const data =""
     const response = await axios.get(URL, options);
-    console.log(response.data.data)
     const data = response.data.data;
     return data;
 

@@ -1,22 +1,35 @@
-import React, { useState, useEffect, createRef } from "react";
+import React, { useState, useEffect, createRef, useRef } from "react";
 import { CircularProgress } from "@mui/material";
 import Place from "./Place";
 import PlaceDetails from "./PlaceDetails";
 
 const List = ({ places, childClicked, isLoading }) => {
-  // const [refs, setRefs] = useState([]);
+  const refs = useRef([]);
+  const [elRefs, setElRefs] = useState([]);
 
-  // useEffect(() => {
-  //   if (places && Array.isArray(places)) {
-  //     setRefs((prevRefs) =>
-  //       Array(places.length)
-  //         .fill()
-  //         .map((_, index) => prevRefs[index] || createRef())
-  //     );
-  //   }
-  // }, [places]);
+  useEffect(() => {
+    if (places.length !== refs.current.length) {
+      refs.current = Array(places.length)
+        .fill()
+        .map((_, index) => refs.current[index] ?? React.createRef());
+    }
+  }, [places]);
 
-  console.log("list",places)
+  useEffect(() => {
+    console.log(
+      "refs when child clicked",
+      refs.current[childClicked],
+      childClicked,
+      places
+    );
+    if (childClicked !== null && refs.current[childClicked]?.current) {
+      console.log("list child clicked", childClicked);
+      refs.current[childClicked].current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [childClicked]);
 
   return (
     <div className="p-[10px] h-[80vh] sm:h-full flex flex-col scroll-smooth ">
@@ -74,16 +87,12 @@ const List = ({ places, childClicked, isLoading }) => {
             {places && Array.isArray(places) && places.length > 0
               ? places.map((place, index) =>
                   place.rating !== undefined && place.rating !== null ? (
-                    <div key={index}>
-                      <PlaceDetails
-                        place={place}
-                        // selected={Number(childClicked) === index}
-                        // refProp={refs[index]}
-                      />
+                    <div key={index} ref={refs.current[index]}>
+                      <PlaceDetails place={place} />
                     </div>
                   ) : null
                 )
-              : ""}
+              : null}
           </div>
         </>
       )}
