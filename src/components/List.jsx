@@ -1286,7 +1286,7 @@ const List = ({ places1 }) => {
     },
   ];
   return (
-    <div className="p-[10px] h-[50vh] sm:h-full flex flex-col scroll-smooth ">
+    <div className="p-[10px] h-[80vh] sm:h-full flex flex-col scroll-smooth ">
       <h2 className="text-xl mb-2 xs:text-2xl">
         Restaurants, Hotels & Attractions around you
       </h2>

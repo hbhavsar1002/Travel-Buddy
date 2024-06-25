@@ -22,8 +22,8 @@ export const getPlacesData = async (sw, ne) => {
           "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
         },
       };
-
-    const {data:{data}} = await axios.get(URL, options);
+      const data = ""
+    //const {data:{data}} = await axios.get(URL, options);
 
     return data;
   } catch (error) {
