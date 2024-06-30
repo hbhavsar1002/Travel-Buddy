@@ -16,7 +16,7 @@ export const getPlacesData = async (type, sw, ne) => {
         tr_longitude: ne.lng,
       },
       headers: {
-        "x-rapidapi-key": process.env.RAPIDAPI_KEY,
+        "x-rapidapi-key": process.env.REACT_APP_RAPIDAPI_KEY,
         "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
       },
     };
@@ -40,7 +40,7 @@ export const getWashroomLocationData = async (coordinates) => {
         per_page: "20",
       },
       headers: {
-        "x-rapidapi-key": "2fd06344cdmsh6212c9232dc4f59p1381c2jsn8f70de40b4b0",
+        "x-rapidapi-key": REACT_APP_PUBLIC_BATHROOMS_API_KEY,
         "x-rapidapi-host": "public-bathrooms.p.rapidapi.com",
       },
     };

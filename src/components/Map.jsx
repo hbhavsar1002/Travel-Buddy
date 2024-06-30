@@ -28,7 +28,7 @@ const Map = ({
     <div className="h-[85vh] rounded-md border-5 border-black m-2">
       <GoogleMapReact
         //onChildClick={(child) => setChildClicked(child)}
-        bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS_API_KEY }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={15}
