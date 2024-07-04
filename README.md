@@ -1,5 +1,5 @@
 # Travel Buddy
-This project utilizes Google API and Rapid APIs to retrieve data of restaurant, hotels, attractions and public restrooms data and display it on Google Maps.
+This project utilizes Google API and Rapid APIs to retrieve restaurant, hotels, attractions and public restrooms data and display it on Google Maps.
 
 ## Getting Started with Create React App
 
